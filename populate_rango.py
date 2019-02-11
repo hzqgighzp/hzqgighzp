@@ -41,8 +41,8 @@ def populate():
 
     cats = {
         "Python": {"pages": python_pages, "views":128, "likes":64},
-        "Django": {"pages": django_pages, "views":127, "likes":63},
-        "Other Frameworks": {"pages": other_pages, "views":126, "likes":62}
+        "Django": {"pages": django_pages, "views":64, "likes":32},
+        "Other Frameworks": {"pages": other_pages, "views":32, "likes":16}
     }
 
     for cat, cat_data in cats.items():
