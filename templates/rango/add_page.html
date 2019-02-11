@@ -8,7 +8,6 @@ Add Page
 {% block body_block %}
 <h1>Add a Page to {{ category.name }}</h1>
         <div>
-        {% if user.is_authenticated %}
             <form id="page_form" method="post" action="/rango/category/{{ category.slug }}/add_page/">
                 {% csrf_token %}
                 {% for hidden in form.hidden_fields %}
@@ -21,8 +20,5 @@ Add Page
                 {% endfor %}
                 <input type="submit" name="submit" value="Add Page" />
             </form>
-        {% else %}
-            <strong>You have not logined!</strong>
-        {% endif %}
         </div>
 {% endblock %}

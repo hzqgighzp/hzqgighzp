@@ -30,7 +30,13 @@ def about(request):
         request.session.delete_test_cookie()
     print(request.method)
     print(request.user)
-    return render(request, 'rango/about.html', {})
+
+    context_dict={}
+    visitor_cookie_handler(request)
+    context_dict['visits'] = request.session['visits']
+
+    response = render(request, 'rango/about.html', context_dict)
+    return response
 
 
 def show_category(request, category_name_slug):
@@ -204,7 +210,7 @@ def user_login(request):
         else:
             # Bad login details were provided. So we can't log the user in.
             print("Invalid login details: {0}, {1}".format(username, password))
-            return HttpResponse("Your username or password is incorrect!")
+            return HttpResponse("Invalid login details supplied.")
         
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
